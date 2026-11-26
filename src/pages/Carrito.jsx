@@ -1,22 +1,19 @@
 import { useNavigate } from 'react-router-dom';
-
 import { useCarritoStore } from '../store/useCarritoStore.js';
 import { formatearPrecio } from '../utils/formato.js';
 
 export default function Carrito() {
   const navigate = useNavigate();
 
-  // Estado y acciones del store (un selector por cada cosa)
   const productos = useCarritoStore((state) => state.productos);
   const sumarCantidad = useCarritoStore((state) => state.sumarCantidad);
   const restarCantidad = useCarritoStore((state) => state.restarCantidad);
   const eliminarProducto = useCarritoStore((state) => state.eliminarProducto);
 
-  // Carrito vacío: mensaje + botón para volver al catálogo
-  if (productos.length === 0) {
+  if (!productos || productos.length === 0) {
     return (
       <div className="estado estado--vacio">
-        <p>Tu carrito está vacío 🧺</p>
+        <p>Tu carrito está vacío </p>
         <button
           type="button"
           className="btn btn--primario"
@@ -43,7 +40,6 @@ export default function Carrito() {
             <p>{formatearPrecio(producto.precio)} c/u</p>
           </div>
 
-          {/* Controles de cantidad */}
           <div className="contador">
             <button
               type="button"
@@ -51,7 +47,7 @@ export default function Carrito() {
               onClick={() => restarCantidad(producto.id)}
               aria-label="Restar una unidad"
             >
-              −
+              
             </button>
             <span className="contador__valor">{producto.cantidad}</span>
             <button
@@ -64,7 +60,6 @@ export default function Carrito() {
             </button>
           </div>
 
-          {/* Subtotal = precio × cantidad */}
           <p className="carrito__subtotal">
             {formatearPrecio(producto.precio * producto.cantidad)}
           </p>
@@ -74,7 +69,7 @@ export default function Carrito() {
             className="btn btn--peligro"
             onClick={() => eliminarProducto(producto.id)}
           >
-            🗑 Eliminar
+            Eliminar
           </button>
         </li>
       ))}
