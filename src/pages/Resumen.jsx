@@ -5,7 +5,7 @@ import { formatearPrecio } from '../utils/formato.js';
 const COSTO_ENVIO = 5; 
 
 export default function Resumen() {
-  const productos = useCarritoStore((state) => state.productos);
+  const productos = useCarritoStore((state) => state.items);
   const vaciarCarrito = useCarritoStore((state) => state.vaciarCarrito);
 
   const [mensaje, setMensaje] = useState('');

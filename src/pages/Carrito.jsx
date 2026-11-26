@@ -5,7 +5,7 @@ import { formatearPrecio } from '../utils/formato.js';
 export default function Carrito() {
   const navigate = useNavigate();
 
-  const productos = useCarritoStore((state) => state.productos);
+  const productos = useCarritoStore((state) => state.items);
   const sumarCantidad = useCarritoStore((state) => state.sumarCantidad);
   const restarCantidad = useCarritoStore((state) => state.restarCantidad);
   const eliminarProducto = useCarritoStore((state) => state.eliminarProducto);
