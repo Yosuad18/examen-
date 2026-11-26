@@ -7,11 +7,10 @@ function Inicio() {
     <div className="inicio">
       <h2 className="inicio__titulo">Bienvenido a MercaCauca</h2>
       <p className="inicio__texto">
-        Explora productos de ecomerce en la ciudad de opayan
+        Explora productos de ecomerce en la ciudad de popayan
       </p>
 
       <div className="inicio__tarjetas">
-        {/* Tarjeta de la Section 1 */}
         <article className="tarjeta-inicio">
           <img alt="Vista previa del catálogo" />
           <h3>Catálogo</h3>
@@ -27,7 +26,7 @@ function Inicio() {
 
         {/* Tarjeta de la Section 2 */}
         <article className="tarjeta-inicio">
-          <img alt="Vista previa del carrito" />
+          <img alt="Vista previa de compras" />
           <h3>Mis compras</h3>
           <p>Carrito global con Zustand: agregar, sumar, restar y eliminar.</p>
           <button
