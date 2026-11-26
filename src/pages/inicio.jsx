@@ -12,7 +12,7 @@ export default function Inicio() {
 
       <div className="inicio__tarjetas">
         <article className="tarjeta-inicio p-6">
-          <img alt="Vista previa del catálogo" />
+          <img src="../assets/hero.png"alt="Vista previa del catálogo" />
           <h3>Catálogo</h3>
           <p className='p-6'>Productos con fetch (FakeStoreAPI) y con Axios (DummyJSON).</p>
           <button
@@ -26,7 +26,7 @@ export default function Inicio() {
 
         {/* Tarjeta de la Section 2 */}
         <article className="tarjeta-inicio p-6">
-          <img alt="Vista previa de compras" />
+          <img src= "../assets/react.sgv"alt="Vista previa de compras" />
           <h3>Mis compras</h3>
           <p>Carrito global con Zustand: agregar, sumar, restar y eliminar.</p>
           <button
