@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { apiDummy } from '../services/apiDummy.js';
 import { useCarritoStore } from '../store/useCarritoStore.js';
-import { formatearPrecio } from '../utils/Formato.js'
+import { formatearPrecio } from '../utils/formato.js'
 
 const CATEGORIAS = [
   { valor: 'todas', texto: 'Todas' },
