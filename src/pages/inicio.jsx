@@ -34,7 +34,7 @@ function Inicio() {
             className="btn btn--secundario"
             onClick={() => navigate('/compras')}
           >
-            Ir al carrito
+            Ir a compras
           </button>
         </article>
       </div>

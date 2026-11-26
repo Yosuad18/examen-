@@ -8,7 +8,7 @@ export default function Header(){
 
     return(
         <header>
-            <h1>Mi tienda</h1>
+            <h1>Mi tienda MercaCauca</h1>
             <span>Productos en {totalUnidades}</span>
             <button className="btn-primario" onClick={() => navigate('/carrito')}>
                 Ver compras({totalUnidades})
