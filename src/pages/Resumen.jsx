@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useCarritoStore } from '../store/useCarritoStore.js';
-import { formatearPrecio } from '../utils/Formato.js';
+import { formatearPrecio } from '../utils/formato.js';
 
 const COSTO_ENVIO = 5; 
 
