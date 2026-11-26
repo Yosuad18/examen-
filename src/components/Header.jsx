@@ -9,8 +9,8 @@ export default function Header(){
     return(
         <header>
             <h1 className="text-red-700 text-6xl">Mi tienda MercaCauca</h1>
-            <span className="text-green-700">Productos en {totalUnidades}</span>
-            <button className=" bg-white shadow-sm  " onClick={() => navigate('/carrito')}>
+            <span className="text-green-700 text-3xl">Productos en {totalUnidades}</span>
+            <button className=" bg-white shadow-sm text-3xl " onClick={() => navigate('/carrito')}>
                 Ver compras({totalUnidades})
             </button>
         </header>

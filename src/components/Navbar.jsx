@@ -15,7 +15,7 @@ export default function Navbar() {
     boton.exacta ? pathname === boton.ruta : pathname.startsWith(boton.ruta);
 
   return (
-    <nav className="navbar" aria-label="Navegación principal">
+    <nav className="navbar rounded-5xl border border-stone-200" aria-label="Navegación principal">
       {BOTONES.map((boton) => (
         <button
           key={boton.ruta}

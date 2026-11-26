@@ -29,7 +29,7 @@ export default function Resumen() {
   };
 
   return (
-    <div className="resumen">
+    <div className="resumen text-2xl">
       <h2>Resumen de compra</h2>
 
       <dl className="resumen__tabla">

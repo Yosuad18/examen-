@@ -11,7 +11,7 @@ export default function SectionCompras() {
                 className="seccion__banner"
             />
 
-            <div className="pestanas">
+            <div className="pestanas text-green-600" >
                 <NavLink to="/compras" end className="pestanas__item">
                     Carrito ({distintos})
                 </NavLink>

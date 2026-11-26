@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-function Inicio() {
+export default function Inicio() {
   const navigate = useNavigate();
 
   return (
@@ -42,4 +42,4 @@ function Inicio() {
   );
 }
 
-export default Inicio;
+
