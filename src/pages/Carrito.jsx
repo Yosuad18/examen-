@@ -1,57 +1,83 @@
-import { useNavigate } from 'react-router-dom'
-import { useCarritoStore } from '../store/useCarritoStore'
+import { useNavigate } from 'react-router-dom';
+
+import { useCarritoStore } from '../store/useCarritoStore.js';
+import { formatearPrecio } from '../utils/formato.js';
 
 export default function Carrito() {
-  const navigate = useNavigate()
-  const items = useCarritoStore((state) => state.items)
-  const calcularTotal = useCarritoStore((state) => state.calcularTotal)
-  const eliminarProducto = useCarritoStore((state) => state.eliminarProducto)
-  const vaciarCarrito = useCarritoStore((state) => state.vaciarCarrito)
-  const total = calcularTotal()
+  const navigate = useNavigate();
 
-  if (items.length === 0) {
+  // Estado y acciones del store (un selector por cada cosa)
+  const productos = useCarritoStore((state) => state.productos);
+  const sumarCantidad = useCarritoStore((state) => state.sumarCantidad);
+  const restarCantidad = useCarritoStore((state) => state.restarCantidad);
+  const eliminarProducto = useCarritoStore((state) => state.eliminarProducto);
+
+  // Carrito vacío: mensaje + botón para volver al catálogo
+  if (productos.length === 0) {
     return (
-      <section className="panel">
-        <h2>Carrito</h2>
-        <p className="vacio">Tu carrito está vacío</p>
-        <button className="btn btn-secundario btn-bloque" onClick={() => navigate('/')}>
+      <div className="estado estado--vacio">
+        <p>Tu carrito está vacío 🧺</p>
+        <button
+          type="button"
+          className="btn btn--primario"
+          onClick={() => navigate('/catalogo')}
+        >
           Ir al catálogo
         </button>
-      </section>
-    )
+      </div>
+    );
   }
 
   return (
-    <section className="panel">
-      <h2>Carrito</h2>
-      {items.map((item) => (
-        <div key={item.id} className="fila">
-          <div>
-            <p className="fila-nombre">{item.nombre}</p>
-            <p className="fila-detalle">
-              {item.cantidad} x ${item.precio.toLocaleString('es-CO')}
-            </p>
+    <ul className="carrito">
+      {productos.map((producto) => (
+        <li key={producto.id} className="carrito__item">
+          <img
+            src={producto.imagen}
+            alt={producto.titulo}
+            className="carrito__imagen"
+          />
+
+          <div className="carrito__info">
+            <h3>{producto.titulo}</h3>
+            <p>{formatearPrecio(producto.precio)} c/u</p>
           </div>
+
+          {/* Controles de cantidad */}
+          <div className="contador">
+            <button
+              type="button"
+              className="contador__btn"
+              onClick={() => restarCantidad(producto.id)}
+              aria-label="Restar una unidad"
+            >
+              −
+            </button>
+            <span className="contador__valor">{producto.cantidad}</span>
+            <button
+              type="button"
+              className="contador__btn"
+              onClick={() => sumarCantidad(producto.id)}
+              aria-label="Sumar una unidad"
+            >
+              +
+            </button>
+          </div>
+
+          {/* Subtotal = precio × cantidad */}
+          <p className="carrito__subtotal">
+            {formatearPrecio(producto.precio * producto.cantidad)}
+          </p>
+
           <button
-            className="btn btn-secundario"
-            onClick={() => eliminarProducto(item.id)}
+            type="button"
+            className="btn btn--peligro"
+            onClick={() => eliminarProducto(producto.id)}
           >
-            Quitar
+            🗑 Eliminar
           </button>
-        </div>
+        </li>
       ))}
-
-      <div className="total">
-        <span>Total</span>
-        <strong>${total.toLocaleString('es-CO')}</strong>
-      </div>
-
-      <button
-        className="btn btn-secundario btn-bloque"
-        onClick={vaciarCarrito}
-      >
-        Vaciar carrito
-      </button>
-    </section>
-  )
+    </ul>
+  );
 }

@@ -3,7 +3,7 @@ export default function Footer() {
 
   return (
     <footer className="footer">
-      <p>
+      <p className="--green-900">
         © {anio} MercaCauca SENA · Yosuad David Castillo Valdes · ADSO 3223898
       </p>
       <p className="footer__apis">
