@@ -11,11 +11,9 @@ import SectionCompras from './sections/SectionCompras.jsx';
 import NoEncontrado from './pages/NoEncontrado.jsx';
 
 export default function App() {
-    return(
-        <Routes>
-      {/* Ruta padre: el Layout siempre se ve; su Outlet cambia */}
+  return (
+    <Routes>
       <Route path="/" element={<Layout />}>
-        {/* index = lo que se muestra en "/" exactamente */}
         <Route index element={<Inicio />} />
 
         <Route path="catalogo" element={<SectionCatalogo />}>
@@ -27,9 +25,10 @@ export default function App() {
           <Route index element={<Carrito />} />
           <Route path="resumen" element={<Resumen />} />
         </Route>
-        <Route path="*" element={<NoEncontrado />} />
       </Route>
+
+      <Route path="*" element={<NoEncontrado />} />
     </Routes>
-    )
+  );
 }
 
