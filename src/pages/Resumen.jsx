@@ -29,7 +29,7 @@ export default function Resumen() {
   };
 
   return (
-    <div className="resumen text-2xl">
+    <div className="resumen text-yellow-300 bg-black border-8">
       <h2>Resumen de compra</h2>
 
       <dl className="resumen__tabla">
@@ -52,15 +52,15 @@ export default function Resumen() {
       <div className="resumen__acciones">
         <button
           type="button"
-          className="btn btn--primario"
+          className="btn btn--primario flex-1"
           onClick={finalizarCompra}
           disabled={productos.length === 0}
         >
           Finalizar compra
         </button>
-        <button
+        <button 
           type="button"
-          className="btn btn--peligro"
+          className="btn btn--peligro flex-1"
           onClick={vaciarCarrito}
           disabled={productos.length === 0}
         >
