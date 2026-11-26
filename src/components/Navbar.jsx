@@ -1,0 +1,32 @@
+import { useNavigate, useLocation } from 'react-router-dom';
+
+const BOTONES = [
+  { texto: 'Inicio', icono: '🏠', ruta: '/', exacta: true },
+  { texto: 'Catálogo', icono: '🛍️', ruta: '/catalogo', exacta: false },
+  { texto: 'Carrito', icono: '🛒', ruta: '/compras', exacta: true },
+  { texto: 'Resumen', icono: '🧾', ruta: '/compras/resumen', exacta: true },
+];
+
+export default function Navbar() {
+  const navigate = useNavigate(); 
+  const { pathname } = useLocation();
+
+  const estaActivo = (boton) =>
+    boton.exacta ? pathname === boton.ruta : pathname.startsWith(boton.ruta);
+
+  return (
+    <nav className="navbar" aria-label="Navegación principal">
+      {BOTONES.map((boton) => (
+        <button
+          key={boton.ruta}
+          type="button"
+          className={`navbar__btn ${estaActivo(boton) ? 'navbar__btn--activo' : ''}`}
+          onClick={() => navigate(boton.ruta)}
+        >
+          <span aria-hidden="true">{boton.icono}</span> {boton.texto}
+        </button>
+      ))}
+    </nav>
+  );
+}
+
