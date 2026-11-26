@@ -1,5 +1,14 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom';
+import Inicio from './pages/inicio.jsx';
+import ProductosFetch from './pages/ProductosFetch.jsx';
+import ProductosAxios from './pages/ProductosAxios.jsx';
+import Carrito from './pages/Carrito.jsx';
+import Resumen from './pages/Resumen.jsx';
+import Layout from './layout/Layout.jsx';
+import SectionCatalogo from './sections/SectionCatalogo.jsx';
+import SectionCompras from './sections/SectionCompras.jsx';
+import NoEncontrado from './pages/NoEncontrado.jsx';
 
 export default function App() {
     return(
@@ -9,18 +18,16 @@ export default function App() {
         {/* index = lo que se muestra en "/" exactamente */}
         <Route index element={<Inicio />} />
 
-        {/* ---------- SECTION 1: CATÁLOGO ---------- */}
         <Route path="catalogo" element={<SectionCatalogo />}>
           <Route index element={<ProductosFetch />} />
           <Route path="axios" element={<ProductosAxios />} />
         </Route>
 
-        {/* ---------- SECTION 2: COMPRAS ---------- */}
         <Route path="compras" element={<SectionCompras />}>
           <Route index element={<Carrito />} />
           <Route path="resumen" element={<Resumen />} />
         </Route>
-
+        <Route path="*" element={<NoEncontrado />} />
       </Route>
     </Routes>
     )
